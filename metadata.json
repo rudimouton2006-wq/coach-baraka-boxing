@@ -1,0 +1,6 @@
+{
+  "name": "Coach Baraka Boxing",
+  "description": "Professional single-page portfolio and booking site for Cape Town certified boxing coach Baraka Kalekuzi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
