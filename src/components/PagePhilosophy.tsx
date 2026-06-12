@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Target, Brain, Clock, ShieldCheck } from 'lucide-react';
 import SessionSimulator from './SessionSimulator';
+import page2Image from '../assets/images/page2.jpg';
 
 const PHILOSOPHY_PILLARS = [
   {
@@ -70,9 +71,9 @@ export default function PagePhilosophy() {
 
         <div className="relative aspect-[4/3] lg:aspect-square rounded-3xl overflow-hidden bg-zinc-900">
           <img
-            src="https://images.unsplash.com/photo-1628282054668-3e5e483e58e4?auto=format&fit=crop&q=80&w=1200"
-            alt="Boxing hand wraps preparation"
-            className="w-full h-full object-cover grayscale opacity-90"
+            src={page2Image}
+            alt="Muhammad Ali vs Sonny Liston"
+            className="w-full h-full object-cover grayscale opacity-90 hover:opacity-100 transition-opacity duration-500"
           />
         </div>
       </section>
@@ -134,7 +135,6 @@ export default function PagePhilosophy() {
           </p>
         </div>
         
-        {/* The SessionSimulator component will render here */}
         <SessionSimulator />
       </section>
 
