@@ -1,5 +1,4 @@
 import { motion } from 'motion/react';
-import { CalendarRange, Sparkles } from 'lucide-react';
 import BookingForm from './BookingForm';
 
 interface PageBookingsProps {
@@ -8,58 +7,69 @@ interface PageBookingsProps {
 
 export default function PageBookings({ selectedService }: PageBookingsProps) {
   return (
-    <div className="space-y-12 py-6 md:py-12">
-      {/* Header */}
-      <div className="text-center max-w-2xl mx-auto space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs text-yellow-400">
-          <CalendarRange className="w-4 h-4" />
-          <span className="font-mono tracking-widest text-[10px] uppercase font-bold text-zinc-300">SECURE BASICS SYNC</span>
+    <div className="space-y-16 md:space-y-24 pt-4 md:pt-12">
+      
+      {/* HEADER SECTION */}
+      <section className="text-center max-w-3xl mx-auto space-y-6">
+        <div className="inline-block border border-zinc-800 rounded-full px-4 py-1.5 text-xs font-medium tracking-widest text-zinc-400 uppercase">
+          Schedule Your Session
         </div>
-        <h2 className="text-3xl md:text-5xl font-display font-black text-white tracking-tight uppercase">
-          READY TO START TRAINING?
-        </h2>
-        <p className="text-xs md:text-sm text-zinc-400 max-w-md mx-auto leading-relaxed">
-          Schedule your first session or ask about specialized packages. Complete our dynamic tactical profile selection below to claim your alignment slot.
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white tracking-tight leading-[1.1]">
+          Ready to start <br />
+          <span className="text-zinc-500">training?</span>
+        </h1>
+        <p className="text-lg text-zinc-400 font-light leading-relaxed max-w-xl mx-auto">
+          Secure your spot with Coach Baraka. Fill out the intake form below to receive a customized training proposal and coordinate your first session.
         </p>
-      </div>
+      </section>
 
-      {/* Booking Intake System Widget */}
-      <div className="pt-4">
+      {/* BOOKING INTAKE WIDGET */}
+      <section>
         <BookingForm selectedService={selectedService} />
-      </div>
+      </section>
 
-      {/* Visual Booking Steps Flow Guide */}
-      <div className="border border-zinc-900 bg-zinc-950/20 rounded-3xl p-6 md:p-8 space-y-6">
-        <div className="flex items-center gap-2">
-          <Sparkles className="w-5 h-5 text-yellow-500" />
-          <h4 className="font-display font-extrabold text-sm text-white uppercase tracking-wide">
-            ONBOARDING CYCLE STEPS
-          </h4>
+      {/* VISUAL BOOKING FLOW GUIDE */}
+      <section className="bg-[#0a0a0a] border border-zinc-900 rounded-3xl p-8 md:p-16 space-y-12">
+        <div className="text-center">
+          <h3 className="font-display font-bold text-2xl md:text-3xl text-white tracking-tight">
+            How It Works
+          </h3>
+          <p className="text-zinc-400 font-light mt-2">A simple, three-step onboarding process.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-zinc-400">
-          <div className="space-y-1">
-            <span className="font-mono text-yellow-500 font-bold">STAGE 01. PROFILE SUBMISSION</span>
-            <p className="leading-relaxed">
-              Fill in your phone number, athletic goals, and previous boxing background. Your recommendation changes in real-time.
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center">
+          <div className="space-y-4">
+            <div className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-6">
+              1
+            </div>
+            <h4 className="text-lg font-bold text-white">Profile Submission</h4>
+            <p className="text-sm text-zinc-400 font-light leading-relaxed">
+              Provide your contact details, fitness background, and primary goals. Our system will immediately generate a technical recommendation tailored to you.
             </p>
           </div>
 
-          <div className="space-y-1 border-t md:border-t-0 md:border-l border-zinc-900 pt-4 md:pt-0 md:pl-6">
-            <span className="font-mono text-yellow-500 font-bold">STAGE 02. DIRECT COORDINATION</span>
-            <p className="leading-relaxed">
-              Coach Baraka receives your profile and contacts you within 2 hours on WhatsApp or Phone to secure your exact calendar time.
+          <div className="space-y-4">
+            <div className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-6">
+              2
+            </div>
+            <h4 className="text-lg font-bold text-white">Direct Coordination</h4>
+            <p className="text-sm text-zinc-400 font-light leading-relaxed">
+              Coach Baraka will review your intake and reach out within 2 hours via WhatsApp or a direct phone call to confirm your exact calendar slot.
             </p>
           </div>
 
-          <div className="space-y-1 border-t md:border-t-0 md:border-l border-zinc-900 pt-4 md:pt-0 md:pl-6">
-            <span className="font-mono text-yellow-500 font-bold">STAGE 03. BASELINE DRILLS</span>
-            <p className="leading-relaxed">
-              Meet Coach Baraka at the Bree Street P4P gym base. Put on wraps and start calibration loops safely!
+          <div className="space-y-4">
+            <div className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-6">
+              3
+            </div>
+            <h4 className="text-lg font-bold text-white">Baseline Drills</h4>
+            <p className="text-sm text-zinc-400 font-light leading-relaxed">
+              Meet at Pound for Pound Boxing Gym on Bree Street, wrap your hands, and step into the ring to begin your training program.
             </p>
           </div>
         </div>
-      </div>
+      </section>
+      
     </div>
   );
 }

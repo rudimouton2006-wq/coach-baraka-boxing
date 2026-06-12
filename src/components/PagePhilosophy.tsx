@@ -1,134 +1,143 @@
 import { motion } from 'motion/react';
-import { Target, Lightbulb, Zap, ShieldAlert, Award } from 'lucide-react';
+import { Target, Brain, Clock, ShieldCheck } from 'lucide-react';
 import SessionSimulator from './SessionSimulator';
 
 const PHILOSOPHY_PILLARS = [
   {
     id: "01",
-    title: "FOCUS & TACTICAL IQ",
-    subtitle: "Real ring intelligence",
-    icon: <Target className="w-6 h-6 text-yellow-400" />,
-    desc: "We build smart, technical, complete fighters. Anyone can throw wild punches; we teach you how to set traps, control distance, manage pacing, and remain entirely ice-cold under severe physical pressure."
+    title: "Tactical Intelligence",
+    icon: <Target className="w-5 h-5 text-black" />,
+    desc: "We build smart, complete fighters. Beyond simply throwing punches, you will learn distance control, pacing, and how to remain calm and analytical under pressure."
   },
   {
     id: "02",
-    title: "TEACHING METHOD",
-    subtitle: "Hands-on simple instruction",
-    icon: <Lightbulb className="w-6 h-6 text-yellow-400" />,
-    desc: "Coach Baraka utilizes a highly constructive, progressive learning system. We strip away complex coordination loops into clear, repeatable mechanics that build clean and automatic muscle memory."
+    title: "Structured Learning",
+    icon: <Brain className="w-5 h-5 text-black" />,
+    desc: "Complex movements are stripped down into clear, repeatable mechanics. This progressive method safely builds clean, automatic muscle memory."
   },
   {
     id: "03",
-    title: "SESSION STRUCTURE",
-    subtitle: "60M Championship calibration",
-    icon: <Zap className="w-6 h-6 text-yellow-400" />,
-    desc: "A strictly designed rhythm: detailed physical activation warm-ups, technical footwork studies, explosive focus mitt intervals, sparring stress simulations, and core/breathing flushes."
+    title: "Systematic Sessions",
+    icon: <Clock className="w-5 h-5 text-black" />,
+    desc: "Every class follows a strict, proven rhythm: mobility warm-ups, technical footwork drills, explosive pad work, controlled application, and recovery."
   },
   {
     id: "04",
-    title: "MINDSET COACHING",
-    subtitle: "Disciplined drive off the canvas",
-    icon: <ShieldAlert className="w-6 h-6 text-yellow-400" />,
-    desc: "More than boxing. We instill unwavering personal discipline, mental toughness, and tactical decision-making structures that carry directly from the canvas into daily commercial and life situations."
+    title: "Mental Discipline",
+    icon: <ShieldCheck className="w-5 h-5 text-black" />,
+    desc: "Boxing is more than a physical workout. We instill unwavering personal discipline, mental toughness, and focus that carries directly into your daily life."
   }
 ];
 
 export default function PagePhilosophy() {
   return (
-    <div className="space-y-16 py-6 md:py-12">
-      {/* Intro Header */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div className="lg:col-span-7 space-y-5">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs text-zinc-400">
-            <Award className="w-4 h-4 text-yellow-400" />
-            <span className="font-mono tracking-widest text-[10px] uppercase font-bold">DISCIPLINE IS NOT OPTIONAL</span>
+    <div className="space-y-24 md:space-y-32 pt-4 md:pt-12">
+      
+      {/* PAGE HEADER */}
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="space-y-8">
+          <div className="inline-block border border-zinc-800 rounded-full px-4 py-1.5 text-xs font-medium tracking-widest text-zinc-400 uppercase">
+            Our Methodology
           </div>
-          <h2 className="text-3xl md:text-5xl font-display font-black text-white tracking-tight uppercase leading-none">
-            TECHNICAL FUNDAMENTALS WITH FIGHT IQ
-          </h2>
-          <p className="text-sm md:text-base text-zinc-400 leading-relaxed font-sans max-w-2xl">
-            We believe boxing is a calculated science, not random brawling. By focusing on weight transfer micro-signals, tactical stance symmetry, and high-frequency target mitts, we ensure Coach Baraka's clients gain maximum functional output from every round.
-          </p>
-          <div className="flex flex-wrap gap-4 pt-2 font-mono text-xs text-zinc-500">
-            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-yellow-400 rounded-full" /> STANCE CALIBRATION</span>
-            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-yellow-400 rounded-full" /> WEIGHT TRANSFER SIGNALING</span>
-            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-yellow-400 rounded-full" /> HIGH-FREQUENCY MITT LABS</span>
+          
+          <div className="space-y-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white tracking-tight leading-[1.1]">
+              Built on discipline. <br />
+              <span className="text-zinc-500">Driven by technique.</span>
+            </h1>
+            <p className="text-lg text-zinc-400 max-w-lg font-light leading-relaxed">
+              We believe boxing is a calculated science. By focusing on weight transfer, balance, and strategic movement, we ensure every client gains maximum functional output from every single round.
+            </p>
           </div>
-        </div>
 
-        {/* Tactical imagery card */}
-        <div className="lg:col-span-5 relative">
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070708] via-transparent to-transparent z-10 pointer-events-none" />
-          <div className="absolute -inset-1.5 bg-yellow-400/5 rounded-2xl blur-xl opacity-60 pointer-events-none" />
-          <div className="relative overflow-hidden rounded-2xl border border-zinc-900 bg-zinc-950 aspect-[16/9] md:aspect-[3/1] lg:aspect-[16/10] yellow-glow group">
-            <img
-              src="/src/assets/images/regenerated_image_1780557133512.jpg"
-              alt="Hands wrap preparation for intense focus training session of Coach Baraka Kalekuzi"
-              className="w-full h-full object-cover grayscale opacity-75 group-hover:scale-105 transition-transform duration-750"
-              referrerPolicy="no-referrer"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Philosophy Pillars Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-        {PHILOSOPHY_PILLARS.map((pillar) => (
-          <motion.div
-            key={pillar.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="bg-zinc-950/80 border border-zinc-900 rounded-3xl p-6 md:p-8 space-y-4 hover:border-zinc-800 hover:scale-[1.01] transition-all duration-300 yellow-glow"
-          >
-            <div className="flex justify-between items-start">
-              <span className="p-3 bg-zinc-900 border border-zinc-800 rounded-2xl">
-                {pillar.icon}
-              </span>
-              <span className="text-4xl font-display font-black text-stroke text-zinc-800">
-                {pillar.id}
-              </span>
-            </div>
-            
+          <div className="flex flex-wrap gap-6 pt-2">
             <div className="space-y-1">
-              <h3 className="text-lg md:text-xl font-display font-black text-white tracking-wider">
+              <span className="text-white font-medium block">Stance</span>
+              <span className="text-sm text-zinc-500 block">Perfect balance</span>
+            </div>
+            <div className="w-px h-10 bg-zinc-800 hidden sm:block"></div>
+            <div className="space-y-1">
+              <span className="text-white font-medium block">Mechanics</span>
+              <span className="text-sm text-zinc-500 block">Clean execution</span>
+            </div>
+            <div className="w-px h-10 bg-zinc-800 hidden sm:block"></div>
+            <div className="space-y-1">
+              <span className="text-white font-medium block">IQ</span>
+              <span className="text-sm text-zinc-500 block">Smart strategy</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative aspect-[4/3] lg:aspect-square rounded-3xl overflow-hidden bg-zinc-900">
+          <img
+            src="https://images.unsplash.com/photo-1628282054668-3e5e483e58e4?auto=format&fit=crop&q=80&w=1200"
+            alt="Boxing hand wraps preparation"
+            className="w-full h-full object-cover grayscale opacity-90"
+          />
+        </div>
+      </section>
+
+      {/* PILLARS GRID */}
+      <section className="space-y-12">
+        <div className="text-center max-w-2xl mx-auto space-y-4">
+          <h2 className="text-3xl font-display font-bold text-white tracking-tight">The Core Pillars</h2>
+          <p className="text-zinc-400 font-light">The foundational principles that guide every session with Coach Baraka.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {PHILOSOPHY_PILLARS.map((pillar, index) => (
+            <motion.div
+              key={pillar.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="p-8 bg-[#0a0a0a] border border-zinc-900 rounded-3xl hover:border-zinc-700 transition-colors duration-300 flex flex-col h-full"
+            >
+              <div className="flex justify-between items-start mb-8">
+                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shrink-0">
+                  {pillar.icon}
+                </div>
+                <span className="text-3xl font-display font-bold text-zinc-800 select-none">
+                  {pillar.id}
+                </span>
+              </div>
+              
+              <h3 className="text-xl font-display font-bold text-white mb-3">
                 {pillar.title}
               </h3>
-              <p className="text-xs font-mono text-yellow-400 uppercase tracking-widest font-bold">
-                {pillar.subtitle}
+              <p className="text-zinc-400 font-light leading-relaxed text-sm">
+                {pillar.desc}
               </p>
-            </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
-            <p className="text-sm text-zinc-400 leading-relaxed">
-              {pillar.desc}
-            </p>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Quote Banner */}
-      <div className="border border-zinc-900 bg-zinc-950/40 p-6 md:p-8 rounded-2xl flex items-center gap-4">
-        <span className="font-mono text-3xl md:text-5xl text-yellow-400 font-bold select-none">"</span>
-        <blockquote className="text-sm md:text-base text-zinc-300 italic">
-          "The greatest mistake in amateur boxing is trying to punch harder before learning how to shift your feet weight properly. Control the footing, and the power takes care of itself."
-          <span className="block font-mono text-xs text-yellow-500 font-bold mt-2 uppercase tracking-wider">— COACH BARAKA KALEKUZI</span>
+      {/* QUOTE BLOCK */}
+      <section className="bg-zinc-950 border border-zinc-900 rounded-3xl p-10 md:p-16 text-center max-w-4xl mx-auto">
+        <span className="block text-6xl font-serif text-zinc-800 leading-none mb-6">"</span>
+        <blockquote className="text-xl md:text-2xl font-light text-white leading-relaxed mb-8">
+          The greatest mistake in amateur boxing is trying to punch harder before learning how to shift your weight properly. Control your footing, and the power takes care of itself.
         </blockquote>
-      </div>
+        <cite className="text-sm font-medium tracking-widest text-zinc-500 uppercase not-italic">
+          — Coach Baraka Kalekuzi
+        </cite>
+      </section>
 
-      {/* Session structure Deep-Dive tool block */}
-      <div className="space-y-6 pt-6 border-t border-zinc-900">
-        <div>
-          <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest font-bold">INTERACTIVE STRUCTURE DEEPDIVE</span>
-          <h3 className="text-xl md:text-2xl font-display font-extrabold text-zinc-200">
-            THE SYSTEMATIC 60-MINUTE DRILL TIMELINE
-          </h3>
-          <p className="text-xs md:text-sm text-zinc-400 mt-1 max-w-xl">
-            Every workout block under Coach Baraka utilizes this strict, highly kinetic workflow. Click through the phases to inspect actual drill mechanics.
+      {/* SESSION SIMULATOR WRAPPER */}
+      <section className="pt-12 border-t border-zinc-900 space-y-10">
+        <div className="max-w-2xl space-y-4">
+          <h2 className="text-3xl font-display font-bold text-white tracking-tight">Anatomy of a Session</h2>
+          <p className="text-zinc-400 font-light">
+            Every 60-minute workout utilizes a strict, highly effective workflow. Explore the timeline below to see exactly what to expect when you step into the gym.
           </p>
         </div>
+        
+        {/* The SessionSimulator component will render here */}
         <SessionSimulator />
-      </div>
+      </section>
+
     </div>
   );
 }
