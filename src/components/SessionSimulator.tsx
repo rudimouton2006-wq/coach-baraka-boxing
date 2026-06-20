@@ -24,7 +24,7 @@ const SESSION_STEPS: SessionStep[] = [
       "Dynamic shoulder and hip activation",
       "Stance-specific shadow boxing"
     ],
-    icon: <Activity className="w-5 h-5" />
+    icon: <Activity className="w-5 h-5 md:w-6 md:h-6" />
   },
   {
     id: 2,
@@ -37,7 +37,7 @@ const SESSION_STEPS: SessionStep[] = [
       "Head movement (slipping and rolling)",
       "Feint setups and counter-triggers"
     ],
-    icon: <Crosshair className="w-5 h-5" />
+    icon: <Crosshair className="w-5 h-5 md:w-6 md:h-6" />
   },
   {
     id: 3,
@@ -50,7 +50,7 @@ const SESSION_STEPS: SessionStep[] = [
       "Heavy bag positional intervals",
       "Double-end bag for reflex control"
     ],
-    icon: <Zap className="w-5 h-5" />
+    icon: <Zap className="w-5 h-5 md:w-6 md:h-6" />
   },
   {
     id: 4,
@@ -63,7 +63,7 @@ const SESSION_STEPS: SessionStep[] = [
       "Corner entrapment escapes",
       "Offensive/Defensive scenario drills"
     ],
-    icon: <Shield className="w-5 h-5" />
+    icon: <Shield className="w-5 h-5 md:w-6 md:h-6" />
   },
   {
     id: 5,
@@ -76,7 +76,7 @@ const SESSION_STEPS: SessionStep[] = [
       "Lactic acid flush stretching",
       "Cardiac down-regulation breathing"
     ],
-    icon: <HeartPulse className="w-5 h-5" />
+    icon: <HeartPulse className="w-5 h-5 md:w-6 md:h-6" />
   }
 ];
 
@@ -84,34 +84,34 @@ export default function SessionSimulator() {
   const [activeStep, setActiveStep] = useState<number>(1);
 
   return (
-    <div id="session-simulator" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <div id="session-simulator" className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-10 items-start w-full">
       
       {/* Interactive Step Menu */}
-      <div className="lg:col-span-4 flex flex-col gap-2">
+      <div className="lg:col-span-5 flex flex-col gap-3">
         {SESSION_STEPS.map((step) => {
           const isActive = activeStep === step.id;
           return (
             <button
               key={step.id}
               onClick={() => setActiveStep(step.id)}
-              className={`w-full text-left p-4 rounded-2xl transition-all duration-300 flex items-center justify-between group outline-none ${
+              className={`w-full text-left p-4 md:p-5 rounded-[2rem] transition-all duration-300 flex items-center justify-between group outline-none focus:ring-2 focus:ring-white/20 ${
                 isActive
-                  ? 'bg-white text-black shadow-lg'
-                  : 'bg-transparent text-zinc-500 hover:bg-zinc-900 hover:text-white'
+                  ? 'bg-white text-black shadow-xl scale-[1.02]'
+                  : 'bg-zinc-950 text-zinc-500 border border-zinc-900 hover:bg-zinc-900 hover:text-white'
               }`}
             >
-              <div className="flex items-center gap-4">
-                <span className={`flex items-center justify-center w-8 h-8 rounded-full text-xs font-bold ${
-                  isActive ? 'bg-black text-white' : 'bg-zinc-800 text-zinc-400 group-hover:bg-zinc-700'
+              <div className="flex items-center gap-4 md:gap-5">
+                <span className={`flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full text-sm md:text-base font-bold transition-colors ${
+                  isActive ? 'bg-black text-white' : 'bg-zinc-900 text-zinc-400 group-hover:bg-zinc-800'
                 }`}>
                   0{step.id}
                 </span>
-                <span className="font-display font-bold text-sm md:text-base tracking-wide">
+                <span className="font-display font-bold text-base md:text-lg tracking-wide">
                   {step.phase}
                 </span>
               </div>
-              <ChevronRight className={`w-4 h-4 transition-transform duration-300 ${
-                isActive ? 'rotate-90 text-black' : 'text-zinc-600 group-hover:text-white'
+              <ChevronRight className={`w-5 h-5 transition-transform duration-300 ${
+                isActive ? 'rotate-90 text-black' : 'text-zinc-700 group-hover:text-white'
               }`} />
             </button>
           );
@@ -119,72 +119,81 @@ export default function SessionSimulator() {
       </div>
 
       {/* Details Display Panel */}
-      <div className="lg:col-span-8 bg-[#0a0a0a] border border-zinc-900 rounded-3xl p-8 lg:p-12 min-h-[400px] flex flex-col justify-center">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeStep}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="flex flex-col h-full gap-8"
-          >
-            {/* Header Area */}
-            <div className="flex items-start gap-5 border-b border-zinc-900 pb-8">
-              <div className="p-3 bg-zinc-900 text-white rounded-2xl shrink-0">
-                {SESSION_STEPS[activeStep - 1].icon}
-              </div>
-              <div>
-                <div className="flex items-center gap-3 mb-1">
-                  <span className="text-xs font-bold tracking-widest text-zinc-500 uppercase">
-                    Phase 0{activeStep}
-                  </span>
-                  <span className="w-1 h-1 bg-zinc-700 rounded-full"></span>
-                  <span className="text-xs font-bold tracking-widest text-zinc-500 uppercase">
-                    {SESSION_STEPS[activeStep - 1].duration}
-                  </span>
+      <div className="lg:col-span-7 bg-[#0a0a0a] border border-zinc-900 rounded-[2rem] p-6 sm:p-8 md:p-12 min-h-[500px] flex flex-col justify-center shadow-2xl relative overflow-hidden">
+        {/* Subtle background glow effect */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        
+        <div className="relative z-10">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeStep}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="flex flex-col h-full gap-8"
+            >
+              {/* Header Area */}
+              <div className="flex items-start gap-5 border-b border-zinc-900 pb-6 md:pb-8">
+                <div className="p-3 md:p-4 bg-zinc-900 text-white rounded-2xl shrink-0 shadow-lg">
+                  {SESSION_STEPS[activeStep - 1].icon}
                 </div>
-                <h3 className="text-2xl md:text-3xl font-display font-bold text-white tracking-tight">
-                  {SESSION_STEPS[activeStep - 1].phase}
-                </h3>
-              </div>
-            </div>
-
-            {/* Content Area */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="space-y-6">
-                <div>
-                  <h4 className="text-xs font-bold tracking-widest text-white uppercase mb-2">Objective</h4>
-                  <p className="text-sm text-zinc-400 leading-relaxed">
-                    {SESSION_STEPS[activeStep - 1].focus}
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold tracking-widest text-white uppercase mb-2">Methodology</h4>
-                  <p className="text-sm text-zinc-400 leading-relaxed">
-                    {SESSION_STEPS[activeStep - 1].description}
-                  </p>
+                <div className="flex flex-col justify-center">
+                  <div className="flex items-center gap-3 mb-1.5 md:mb-2">
+                    <span className="text-[10px] md:text-xs font-bold tracking-widest text-zinc-500 uppercase">
+                      Phase 0{activeStep}
+                    </span>
+                    <span className="w-1 h-1 bg-zinc-700 rounded-full"></span>
+                    <span className="text-[10px] md:text-xs font-bold tracking-widest text-zinc-500 uppercase">
+                      {SESSION_STEPS[activeStep - 1].duration}
+                    </span>
+                  </div>
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-white tracking-tight leading-tight">
+                    {SESSION_STEPS[activeStep - 1].phase}
+                  </h3>
                 </div>
               </div>
 
-              {/* Drills List */}
-              <div className="bg-zinc-950 rounded-2xl p-6 border border-zinc-900">
-                <h4 className="text-xs font-bold tracking-widest text-white uppercase mb-4">
-                  Core Exercises
-                </h4>
-                <ul className="space-y-3">
-                  {SESSION_STEPS[activeStep - 1].drills.map((drill, index) => (
-                    <li key={index} className="flex items-start gap-3 text-sm text-zinc-400">
-                      <span className="text-white font-medium mt-0.5">•</span>
-                      <span className="leading-relaxed">{drill}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+              {/* Content Area */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+                <div className="space-y-6 md:space-y-8">
+                  <div>
+                    <h4 className="text-[10px] md:text-xs font-bold tracking-widest text-zinc-500 uppercase mb-2 md:mb-3">
+                      Primary Objective
+                    </h4>
+                    <p className="text-sm md:text-base text-white font-medium leading-relaxed">
+                      {SESSION_STEPS[activeStep - 1].focus}
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="text-[10px] md:text-xs font-bold tracking-widest text-zinc-500 uppercase mb-2 md:mb-3">
+                      Methodology
+                    </h4>
+                    <p className="text-sm text-zinc-400 font-light leading-relaxed">
+                      {SESSION_STEPS[activeStep - 1].description}
+                    </p>
+                  </div>
+                </div>
 
-          </motion.div>
-        </AnimatePresence>
+                {/* Drills List */}
+                <div className="bg-zinc-950 rounded-[2rem] p-6 md:p-8 border border-zinc-900 h-fit shadow-inner">
+                  <h4 className="text-[10px] md:text-xs font-bold tracking-widest text-zinc-500 uppercase mb-4 md:mb-5">
+                    Core Exercises
+                  </h4>
+                  <ul className="space-y-4">
+                    {SESSION_STEPS[activeStep - 1].drills.map((drill, index) => (
+                      <li key={index} className="flex items-start gap-3 text-sm md:text-base text-zinc-300 font-light">
+                        <span className="text-white font-medium mt-0.5">•</span>
+                        <span className="leading-relaxed">{drill}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
 
     </div>
