@@ -1,6 +1,14 @@
 import { motion } from 'motion/react';
 import { ArrowRight, Star, Shield, Target, Activity } from 'lucide-react';
 
+// Cinematic Image Imports
+import homeHeroImg from '../assets/images/home-hero.jpg';
+import coachProfileImg from '../assets/images/coach-profile.jpg';
+import gallery1Img from '../assets/images/gallery-1.jpg';
+import gallery2Img from '../assets/images/gallery-2.jpg';
+import gallery3Img from '../assets/images/gallery-3.jpg';
+import gallery4Img from '../assets/images/gallery-4.jpg';
+
 interface PageHomeProps {
   onNavigate: (view: string) => void;
   onSelectService: (service: string) => void;
@@ -15,7 +23,7 @@ export default function PageHome({ onNavigate, onSelectService }: PageHomeProps)
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="space-y-8"
         >
           <div className="inline-block border border-zinc-800 rounded-full px-4 py-1.5 text-xs font-medium tracking-widest text-zinc-400 uppercase">
@@ -65,49 +73,61 @@ export default function PageHome({ onNavigate, onSelectService }: PageHomeProps)
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="relative aspect-[4/5] lg:aspect-square rounded-3xl overflow-hidden bg-zinc-900"
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="relative aspect-[4/5] lg:aspect-square rounded-3xl overflow-hidden bg-zinc-900 shadow-2xl shadow-black/50"
         >
           <img
-            src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&q=80&w=1200"
-            alt="Coach Baraka Kalekuzi training"
-            className="w-full h-full object-cover grayscale opacity-80 hover:scale-105 hover:opacity-100 hover:grayscale-0 transition-all duration-700"
+            src={homeHeroImg}
+            alt="Coach Baraka Kalekuzi intense pad work training"
+            className="w-full h-full object-cover grayscale opacity-90 hover:scale-105 hover:opacity-100 hover:grayscale-0 transition-all duration-700"
           />
+          {/* Subtle vignette overlay for cinematic depth */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
         </motion.div>
       </section>
 
       {/* PHILOSOPHY TEASER */}
-      <section className="bg-zinc-950 rounded-3xl p-8 md:p-16 border border-zinc-900">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-white tracking-tight">
-              Train smart. <br /> Fight better.
-            </h2>
-            <p className="text-zinc-400 font-light leading-relaxed max-w-md">
-              We believe boxing is a science, not a brawl. Our sessions focus heavily on stance mechanics, weight transfer, and strategic combinations. We build complete, intelligent fighters.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 pt-4">
-              <span className="flex items-center gap-3 text-sm text-zinc-300">
-                <Shield className="w-5 h-5 text-white" /> Defensive Form
-              </span>
-              <span className="flex items-center gap-3 text-sm text-zinc-300">
-                <Target className="w-5 h-5 text-white" /> Precision Padwork
-              </span>
-              <span className="flex items-center gap-3 text-sm text-zinc-300">
-                <Activity className="w-5 h-5 text-white" /> Elite Conditioning
-              </span>
-            </div>
+      <section className="bg-[#0a0a0a] rounded-3xl border border-zinc-900 overflow-hidden group">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
+          <div className="relative aspect-video lg:aspect-auto bg-zinc-900 overflow-hidden">
+            <img 
+              src={coachProfileImg} 
+              alt="Coach Baraka profile portrait" 
+              className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#0a0a0a] hidden lg:block pointer-events-none" />
           </div>
-          <div className="flex lg:justify-end">
-            <button
-              onClick={() => onNavigate('philosophy')}
-              className="px-6 py-3 bg-zinc-900 text-white border border-zinc-800 rounded-full text-sm font-medium hover:bg-white hover:text-black transition-colors flex items-center gap-2"
-            >
-              Read Our Philosophy
-              <ArrowRight className="w-4 h-4" />
-            </button>
+          <div className="p-8 md:p-16 flex flex-col justify-center space-y-8">
+            <div className="space-y-6">
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-white tracking-tight">
+                Train smart. <br /> Fight better.
+              </h2>
+              <p className="text-zinc-400 font-light leading-relaxed max-w-md">
+                We believe boxing is a science, not a brawl. Our sessions focus heavily on stance mechanics, weight transfer, and strategic combinations. We build complete, intelligent fighters.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-6 pt-2">
+                <span className="flex items-center gap-3 text-sm text-zinc-300">
+                  <Shield className="w-5 h-5 text-white" /> Defensive Form
+                </span>
+                <span className="flex items-center gap-3 text-sm text-zinc-300">
+                  <Target className="w-5 h-5 text-white" /> Precision Padwork
+                </span>
+                <span className="flex items-center gap-3 text-sm text-zinc-300">
+                  <Activity className="w-5 h-5 text-white" /> Elite Conditioning
+                </span>
+              </div>
+            </div>
+            <div className="pt-4">
+              <button
+                onClick={() => onNavigate('philosophy')}
+                className="px-6 py-3 bg-zinc-900 text-white border border-zinc-800 rounded-full text-sm font-medium hover:bg-white hover:text-black transition-colors flex items-center gap-2 w-fit"
+              >
+                Read Our Philosophy
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -170,24 +190,54 @@ export default function PageHome({ onNavigate, onSelectService }: PageHomeProps)
         </div>
       </section>
 
+      {/* TRAINING GALLERY */}
+      <section className="space-y-10 pt-12 border-t border-zinc-900">
+        <div className="text-center max-w-2xl mx-auto space-y-4">
+          <h3 className="text-2xl md:text-3xl font-display font-bold text-white tracking-tight">
+            In The Ring
+          </h3>
+          <p className="text-sm text-zinc-500">High-intensity pad work and strategic drills at Pound for Pound Gym.</p>
+        </div>
+
+        {/* Cinematic Masonry Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-4">
+            <div className="relative aspect-square md:aspect-[4/5] rounded-2xl overflow-hidden bg-zinc-900 group">
+              <img src={gallery1Img} alt="Coach Baraka intense padwork" className="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+            </div>
+            <div className="relative aspect-video rounded-2xl overflow-hidden bg-zinc-900 group">
+              <img src={gallery2Img} alt="Coach Baraka focused training face" className="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+            </div>
+          </div>
+          <div className="space-y-4">
+            <div className="relative aspect-video rounded-2xl overflow-hidden bg-zinc-900 group">
+              <img src={gallery4Img} alt="Coach Baraka dynamic boxing drill" className="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+            </div>
+            <div className="relative aspect-square md:aspect-[4/5] rounded-2xl overflow-hidden bg-zinc-900 group">
+              <img src={gallery3Img} alt="Boxing glove impact shot" className="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* TESTIMONIAL */}
-      <section className="py-12 border-t border-zinc-900">
-        <div className="max-w-3xl mx-auto text-center space-y-8">
+      <section className="py-16 border-t border-zinc-900">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
           <div className="flex justify-center gap-1">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="w-5 h-5 fill-white text-white" />
             ))}
           </div>
-          <blockquote className="text-xl md:text-2xl font-light text-zinc-300 leading-relaxed">
+          <blockquote className="text-2xl md:text-3xl font-light text-zinc-200 leading-relaxed tracking-tight">
             "Coach Baraka changed my entire perspective on boxing. His padwork is technical perfection, focusing entirely on clean form, speed, and real strategy. Highly recommended."
           </blockquote>
-          <div className="flex items-center justify-center gap-4">
-            <div className="w-12 h-12 bg-zinc-900 rounded-full flex items-center justify-center font-display font-bold text-white">
+          <div className="flex items-center justify-center gap-4 pt-4">
+            <div className="w-14 h-14 bg-zinc-900 border border-zinc-800 rounded-full flex items-center justify-center font-display font-bold text-white text-lg">
               LN
             </div>
             <div className="text-left">
-              <h5 className="font-medium text-white">Lwandle Ndlovu</h5>
-              <span className="text-xs text-zinc-500 uppercase tracking-widest">Client</span>
+              <h5 className="font-bold text-white text-base tracking-wide">Lwandle Ndlovu</h5>
+              <span className="text-xs text-zinc-500 uppercase tracking-widest font-medium">Active Fighter</span>
             </div>
           </div>
         </div>

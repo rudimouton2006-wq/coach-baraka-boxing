@@ -1,7 +1,9 @@
 import { motion } from 'motion/react';
 import { Target, Brain, Clock, ShieldCheck } from 'lucide-react';
 import SessionSimulator from './SessionSimulator';
-import page2Image from '../assets/images/page2.jpg';
+
+// Cinematic Image Import
+import philosophyHeroImg from '../assets/images/philosophy-hero.jpg';
 
 const PHILOSOPHY_PILLARS = [
   {
@@ -36,7 +38,12 @@ export default function PagePhilosophy() {
       
       {/* PAGE HEADER */}
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div className="space-y-8">
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="space-y-8"
+        >
           <div className="inline-block border border-zinc-800 rounded-full px-4 py-1.5 text-xs font-medium tracking-widest text-zinc-400 uppercase">
             Our Methodology
           </div>
@@ -67,21 +74,27 @@ export default function PagePhilosophy() {
               <span className="text-sm text-zinc-500 block">Smart strategy</span>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="relative aspect-[4/3] lg:aspect-square rounded-3xl overflow-hidden bg-zinc-900">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="relative aspect-[4/3] lg:aspect-square rounded-3xl overflow-hidden bg-zinc-900 shadow-2xl shadow-black/50"
+        >
           <img
-            src={page2Image}
-            alt="Muhammad Ali vs Sonny Liston"
-            className="w-full h-full object-cover grayscale opacity-90 hover:opacity-100 transition-opacity duration-500"
+            src={philosophyHeroImg}
+            alt="Coach Baraka perfect boxing stance"
+            className="w-full h-full object-cover grayscale opacity-90 hover:opacity-100 hover:grayscale-0 transition-all duration-700"
           />
-        </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+        </motion.div>
       </section>
 
       {/* PILLARS GRID */}
       <section className="space-y-12">
         <div className="text-center max-w-2xl mx-auto space-y-4">
-          <h2 className="text-3xl font-display font-bold text-white tracking-tight">The Core Pillars</h2>
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-white tracking-tight">The Core Pillars</h2>
           <p className="text-zinc-400 font-light">The foundational principles that guide every session with Coach Baraka.</p>
         </div>
 
@@ -93,21 +106,21 @@ export default function PagePhilosophy() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="p-8 bg-[#0a0a0a] border border-zinc-900 rounded-3xl hover:border-zinc-700 transition-colors duration-300 flex flex-col h-full"
+              className="p-8 md:p-10 bg-[#0a0a0a] border border-zinc-900 rounded-3xl hover:border-zinc-700 transition-colors duration-300 flex flex-col h-full group"
             >
               <div className="flex justify-between items-start mb-8">
-                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
                   {pillar.icon}
                 </div>
-                <span className="text-3xl font-display font-bold text-zinc-800 select-none">
+                <span className="text-3xl font-display font-bold text-zinc-800 select-none group-hover:text-zinc-700 transition-colors">
                   {pillar.id}
                 </span>
               </div>
               
-              <h3 className="text-xl font-display font-bold text-white mb-3">
+              <h3 className="text-xl md:text-2xl font-display font-bold text-white mb-3">
                 {pillar.title}
               </h3>
-              <p className="text-zinc-400 font-light leading-relaxed text-sm">
+              <p className="text-zinc-400 font-light leading-relaxed text-sm md:text-base">
                 {pillar.desc}
               </p>
             </motion.div>
@@ -116,12 +129,13 @@ export default function PagePhilosophy() {
       </section>
 
       {/* QUOTE BLOCK */}
-      <section className="bg-zinc-950 border border-zinc-900 rounded-3xl p-10 md:p-16 text-center max-w-4xl mx-auto">
+      <section className="bg-zinc-950 border border-zinc-900 rounded-3xl p-10 md:p-16 text-center max-w-4xl mx-auto relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none" />
         <span className="block text-6xl font-serif text-zinc-800 leading-none mb-6">"</span>
-        <blockquote className="text-xl md:text-2xl font-light text-white leading-relaxed mb-8">
+        <blockquote className="text-xl md:text-3xl font-light text-white leading-relaxed mb-8 tracking-tight">
           The greatest mistake in amateur boxing is trying to punch harder before learning how to shift your weight properly. Control your footing, and the power takes care of itself.
         </blockquote>
-        <cite className="text-sm font-medium tracking-widest text-zinc-500 uppercase not-italic">
+        <cite className="text-sm font-bold tracking-widest text-zinc-500 uppercase not-italic">
           — Coach Baraka Kalekuzi
         </cite>
       </section>
@@ -129,7 +143,7 @@ export default function PagePhilosophy() {
       {/* SESSION SIMULATOR WRAPPER */}
       <section className="pt-12 border-t border-zinc-900 space-y-10">
         <div className="max-w-2xl space-y-4">
-          <h2 className="text-3xl font-display font-bold text-white tracking-tight">Anatomy of a Session</h2>
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-white tracking-tight">Anatomy of a Session</h2>
           <p className="text-zinc-400 font-light">
             Every 60-minute workout utilizes a strict, highly effective workflow. Explore the timeline below to see exactly what to expect when you step into the gym.
           </p>

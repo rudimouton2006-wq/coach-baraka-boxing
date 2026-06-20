@@ -1,6 +1,9 @@
 import { motion } from 'motion/react';
 import BookingForm from './BookingForm';
 
+// Cinematic Image Import
+import bookingBgImg from '../assets/images/booking-bg.jpg';
+
 interface PageBookingsProps {
   selectedService: string;
 }
@@ -10,17 +13,38 @@ export default function PageBookings({ selectedService }: PageBookingsProps) {
     <div className="space-y-16 md:space-y-24 pt-4 md:pt-12">
       
       {/* HEADER SECTION */}
-      <section className="text-center max-w-3xl mx-auto space-y-6">
-        <div className="inline-block border border-zinc-800 rounded-full px-4 py-1.5 text-xs font-medium tracking-widest text-zinc-400 uppercase">
-          Schedule Your Session
-        </div>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white tracking-tight leading-[1.1]">
-          Ready to start <br />
-          <span className="text-zinc-500">training?</span>
-        </h1>
-        <p className="text-lg text-zinc-400 font-light leading-relaxed max-w-xl mx-auto">
-          Secure your spot with Coach Baraka. Fill out the intake form below to receive a customized training proposal and coordinate your first session.
-        </p>
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="space-y-6"
+        >
+          <div className="inline-block border border-zinc-800 rounded-full px-4 py-1.5 text-xs font-medium tracking-widest text-zinc-400 uppercase">
+            Schedule Your Session
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white tracking-tight leading-[1.1]">
+            Ready to start <br />
+            <span className="text-zinc-500">training?</span>
+          </h1>
+          <p className="text-lg text-zinc-400 font-light leading-relaxed max-w-md">
+            Secure your spot with Coach Baraka. Fill out the intake form below to receive a customized training proposal and coordinate your first session.
+          </p>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="relative aspect-video lg:aspect-[16/10] rounded-3xl overflow-hidden bg-zinc-900 shadow-2xl shadow-black/50"
+        >
+          <img
+            src={bookingBgImg}
+            alt="Close up of boxing gloves preparing for training"
+            className="w-full h-full object-cover grayscale opacity-90 hover:opacity-100 hover:grayscale-0 transition-all duration-700"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+        </motion.div>
       </section>
 
       {/* BOOKING INTAKE WIDGET */}
